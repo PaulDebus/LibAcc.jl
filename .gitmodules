@@ -1,0 +1,3 @@
+[submodule "extension/include/libacc"]
+	path = extension/include/libacc
+	url = https://github.com/nmoehrle/libacc.git
