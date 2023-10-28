@@ -2,7 +2,7 @@ module LibAcc
 
 using GeometryBasics
 
-export Scene, intersect
+export BVHTree, intersect, closest_point
 
 using CxxWrap
 @wrapmodule(() -> joinpath(@__DIR__, "..", "extension", "build", "libaccwrap"))
