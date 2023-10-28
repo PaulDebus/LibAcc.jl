@@ -14,6 +14,8 @@ end
 Vec3f(x, y, z) = Vec3f(Float32(x), Float32(y), Float32(z))
 Base.length(v::Vec3f) = length(data(v))
 Base.getindex(v::Vec3f, i) = getindex(data(v), i)
+Base.convert(::Type{Vec3f}, v::Vector) = Vec3f(v...)
+Base.convert(::Type{Vector}, v::Vec3f) = data(v)
 
 
 function BVHTree(mesh::Mesh)
