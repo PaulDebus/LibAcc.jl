@@ -12,6 +12,8 @@ function __init__()
 end
 
 Vec3f(x, y, z) = Vec3f(Float32(x), Float32(y), Float32(z))
+Base.length(v::Vec3f) = length(data(v))
+Base.getindex(v::Vec3f, i) = getindex(data(v), i)
 
 
 function BVHTree(mesh::Mesh)
@@ -20,13 +22,13 @@ function BVHTree(mesh::Mesh)
 	return BVHTree(faces, vertices)
 end
 
-function intersect(tree::BVHTree, origin, direction)
+function intersect(tree::BVHTree, origin::Vector, direction::Vector, t_max::Float32=1000000f0)
 	if length(direction) != 3 || length(origin) != 3
 		error("Invalid input dimensions, need 3D.")
 	end
 	o = Vec3f(origin...)
 	d = Vec3f(direction...)
-	return intersect(tree, o, d)
+	return intersect(tree, o, d, t_max)
 end
 
 function closest_point(tree::BVHTree, point::Vector)
